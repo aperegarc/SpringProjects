@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aperegarc.SpringBoot.entity.Tarea;
 import com.aperegarc.SpringBoot.repository.TareaRepository;
 
 
-
+@Service
 public class TareaServiceImpl implements TareaService{
 
     @Autowired
@@ -40,11 +41,10 @@ public class TareaServiceImpl implements TareaService{
     }
     
     public List<Tarea> deleteTarea(Long id){
-        Integer idCliente = tareaRepository.findById(id.intValue()).get().getCliente().getId();
 
         tareaRepository.deleteById(id.intValue());;
 
-        return this.getTareas(idCliente.longValue());
+        return tareaRepository.findAll();
     }
 
     

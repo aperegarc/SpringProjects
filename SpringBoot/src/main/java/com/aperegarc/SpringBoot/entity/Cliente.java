@@ -1,7 +1,8 @@
 package com.aperegarc.SpringBoot.entity;
 
-
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,9 @@ public class Cliente {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "cliente")
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id")
     private List<Tarea> tareas;
 
 }

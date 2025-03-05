@@ -22,6 +22,12 @@ public class TareaController {
     @Autowired
     TareaService tareaService;
 
+
+    @GetMapping
+    public List<Tarea> allTareas(){
+        return tareaService.getAllTareas();
+    }
+
     @GetMapping("/{id}")
     public List<Tarea> listarTareas(@PathVariable Long id) {
         return tareaService.getTareas(id);

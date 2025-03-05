@@ -2,6 +2,9 @@ package com.aperegarc.SpringBoot.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Tarea {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -35,6 +38,7 @@ public class Tarea {
     private Date fechaFin;
     private Boolean enCurso;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
