@@ -11,4 +11,5 @@ public interface TareaService {
     public Tarea getTarea(Integer idTarea);
     public Tarea saveTarea(Tarea tarea);
     public List<Tarea> deleteTarea(Long id);
+    public Tarea modificarTarea(Long id, Tarea tarea);
 }

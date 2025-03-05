@@ -47,6 +47,31 @@ public class TareaServiceImpl implements TareaService{
         return tareaRepository.findAll();
     }
 
+    @Override
+    public Tarea modificarTarea(Long id, Tarea tarea) {
+        Tarea tareaVieja = tareaRepository.findById(id.intValue()).get();
+        if(tarea.getContent() != null || tarea.getContent() == ""){
+            tareaVieja.setContent(tarea.getContent());
+        }
+        if(tarea.getEnCurso() != null){
+            tareaVieja.setEnCurso(tarea.getEnCurso());
+        }
+        if(tarea.getName() != null || tarea.getName() == ""){
+            tareaVieja.setName(tarea.getName());
+        }
+        if(tarea.getFechaInicio() != null){
+            tareaVieja.setFechaInicio(tarea.getFechaInicio());
+        }
+        if(tarea.getFechaFin() != null){
+            tareaVieja.setFechaFin(tarea.getFechaFin());
+        }
+        if(tarea.getCliente() != null){
+            tareaVieja.setCliente(tarea.getCliente());
+        }
+
+        return tareaRepository.save(tareaVieja);
+    }
+
     
     
 }
