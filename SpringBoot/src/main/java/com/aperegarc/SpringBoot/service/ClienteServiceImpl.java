@@ -4,11 +4,8 @@ package com.aperegarc.SpringBoot.service;
 import com.aperegarc.SpringBoot.entity.Cliente;
 import com.aperegarc.SpringBoot.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @Service
