@@ -15,14 +15,6 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
-    /*private List<Cliente> clientes = new ArrayList<>(Arrays.asList(
-            new Cliente(1, "Adri", "apg", "123"),
-            new Cliente(2, "Pedro", "pedro", "123"),
-            new Cliente(3, "Gabi", "gab", "123"),
-            new Cliente(4, "Alex", "corte", "123")
-    ));*/
-
-
     // @GetMapping
     @RequestMapping(method = RequestMethod.GET)
     public List<Cliente> listarClientes() {

@@ -56,7 +56,7 @@ public class TareaController {
     public Tarea modificarTarea(@PathVariable Integer id, @RequestBody Tarea nuevaTarea){
         Tarea tareaVieja = tareaService.getTarea(id);
         tareaService.modificarTarea(id.longValue(), nuevaTarea);
-        return nuevaTarea;
+        return tareaVieja;
     }
 
 }
