@@ -6,18 +6,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.aperegarc.SpringBoot.entity.Authority;
-import com.aperegarc.SpringBoot.entity.Cliente;
+import com.aperegarc.SpringBoot.entity.User;
 import com.aperegarc.SpringBoot.repository.AuthorityRepository;
-import com.aperegarc.SpringBoot.repository.ClienteRepository;
+import com.aperegarc.SpringBoot.repository.UserRepository;
 
 @Component
 public class Runner implements CommandLineRunner {
 
-    private final ClienteRepository clienteRepository;
+    private final UserRepository userRepository;
     private final AuthorityRepository authorityRepository;
 
-    public Runner(ClienteRepository clienteRepository, AuthorityRepository authorityRepository) {
-        this.clienteRepository = clienteRepository;
+    public Runner(UserRepository userRepository, AuthorityRepository authorityRepository) {
+        this.userRepository = userRepository;
         this.authorityRepository = authorityRepository;
     }
 
@@ -30,9 +30,9 @@ public class Runner implements CommandLineRunner {
                     new Authority(AuthorityName.WRITE)));
         }
 
-        if (this.clienteRepository.count() == 0) {
-            this.clienteRepository.saveAll(List.of(
-                    new Cliente("admin", "admin", "admin", List.of(
+        if (this.userRepository.count() == 0) {
+            this.userRepository.saveAll(List.of(
+                    new User("admin", "admin", "admin", List.of(
                             this.authorityRepository.findByName(AuthorityName.ADMIN).get(),
                             this.authorityRepository.findByName(AuthorityName.READ).get(),
                             this.authorityRepository.findByName(AuthorityName.WRITE).get()

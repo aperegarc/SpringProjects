@@ -6,28 +6,28 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.aperegarc.SpringBoot.entity.Cliente;
+import com.aperegarc.SpringBoot.entity.User;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class SecurityUser implements UserDetails{
 
-    private final Cliente cliente;
+    private final User user;
 
     @Override
     public String getUsername() {
-        return cliente.getUsername();
+        return user.getUsername();
     }
 
     @Override
     public String getPassword() {
-        return cliente.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return cliente.getAuthorities().stream().map(SecurityAuthority::new).toList();
+        return user.getAuthorities().stream().map(SecurityAuthority::new).toList();
     }
 
     public boolean isAccountNonExpired(){

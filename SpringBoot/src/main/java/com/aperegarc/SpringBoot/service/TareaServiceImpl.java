@@ -22,7 +22,7 @@ public class TareaServiceImpl implements TareaService{
     }
 
     public List<Tarea> getTareas(Long id){
-        return tareaRepository.findByClienteId(id);
+        return tareaRepository.findByUserId(id);
     }
 
     public Tarea getTarea(Integer idTarea){
@@ -65,8 +65,8 @@ public class TareaServiceImpl implements TareaService{
         if(tarea.getFechaFin() != null){
             tareaVieja.setFechaFin(tarea.getFechaFin());
         }
-        if(tarea.getCliente() != null){
-            tareaVieja.setCliente(tarea.getCliente());
+        if(tarea.getUser() != null){
+            tareaVieja.setUser(tarea.getUser());
         }
 
         return tareaRepository.save(tareaVieja);

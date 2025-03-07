@@ -14,14 +14,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "users")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Cliente {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,16 +32,16 @@ public class Cliente {
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "user_id")
     private List<Tarea> tareas;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "cliente-authority",
+    @JoinTable(name = "user-authority",
         joinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
 
 
-    public Cliente(String name, String username, String pasword, List<Tarea> tareas, List<Authority> authorities) {
+    public User(String name, String username, String pasword, List<Tarea> tareas, List<Authority> authorities) {
         this.name = name;
         this.username = username;
         this.password = pasword;
@@ -51,7 +51,7 @@ public class Cliente {
 
     
 
-    public Cliente(String name, String username, String pasword, List<Authority> authorities) {
+    public User(String name, String username, String pasword, List<Authority> authorities) {
         this.name = name;
         this.username = username;
         this.password = pasword;

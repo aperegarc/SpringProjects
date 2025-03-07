@@ -5,17 +5,19 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.aperegarc.SpringBoot.entity.Tarea;
 
+@Repository
 public interface TareaRepository extends JpaRepository<Tarea, Integer> {
 
-    // Consulta personalizada con JPQL para obtener tareas de un cliente
-    @Query("SELECT t FROM Tarea t WHERE t.cliente.id = :clienteId")
-    List<Tarea> findByClienteId(Long clienteId);
+    // Consulta personalizada con JPQL para obtener tareas de un user
+    @Query("SELECT t FROM Tarea t WHERE t.user.id = :userId")
+    List<Tarea> findByUserId(Long userId);
 
-    // Consulta personalizada para obtener una tarea específica de un cliente
-    @Query("SELECT t FROM Tarea t WHERE t.id = :tareaId AND t.cliente.id = :clienteId")
-    Optional<Tarea> findByClienteIdAndTareaId(Long clienteId, Long tareaId);
+    // Consulta personalizada para obtener una tarea específica de un user
+    @Query("SELECT t FROM Tarea t WHERE t.id = :tareaId AND t.user.id = :userId")
+    Optional<Tarea> findByUserIdAndTareaId(Long userId, Long tareaId);
 
 }

@@ -39,7 +39,7 @@ public class Tarea {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

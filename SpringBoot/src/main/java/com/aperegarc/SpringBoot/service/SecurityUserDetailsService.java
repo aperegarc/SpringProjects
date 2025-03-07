@@ -7,21 +7,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Service;
 
-import com.aperegarc.SpringBoot.repository.ClienteRepository;
+import com.aperegarc.SpringBoot.repository.UserRepository;
 import com.aperegarc.SpringBoot.security.SecurityUser;
 
 @Service
 public class SecurityUserDetailsService implements UserDetailsService{
 
-    private final ClienteRepository clienteRepository;
+    private final UserRepository userRepository;
 
-    public SecurityUserDetailsService(ClienteRepository clienteRepository){
-        this.clienteRepository = clienteRepository;
+    public SecurityUserDetailsService(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        var optUser = this.clienteRepository.findByUsername(username);
+        var optUser = this.userRepository.findByUsername(username);
 
         if(optUser.isPresent()){
             System.out.println("Encontrado"); 
