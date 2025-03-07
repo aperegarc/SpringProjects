@@ -1,9 +1,13 @@
 package com.aperegarc.SpringBoot.controllers;
 
+import com.aperegarc.SpringBoot.entity.Authority;
 import com.aperegarc.SpringBoot.entity.User;
 import com.aperegarc.SpringBoot.service.UserService;
+import com.aperegarc.SpringBoot.utils.AuthorityName;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
