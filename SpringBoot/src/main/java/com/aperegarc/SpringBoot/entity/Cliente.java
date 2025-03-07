@@ -1,5 +1,6 @@
 package com.aperegarc.SpringBoot.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -34,4 +35,27 @@ public class Cliente {
     @JoinColumn(name = "cliente_id")
     private List<Tarea> tareas;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "cliente-authority",
+        joinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+    private List<Authority> authorities;
+
+
+    public Cliente(String name, String username, String pasword, List<Tarea> tareas, List<Authority> authorities) {
+        this.name = name;
+        this.username = username;
+        this.password = pasword;
+        this.tareas = tareas;
+        this.authorities = authorities;
+    }
+
+    
+
+    public Cliente(String name, String username, String pasword, List<Authority> authorities) {
+        this.name = name;
+        this.username = username;
+        this.password = pasword;
+        this.tareas = new ArrayList<>();
+        this.authorities = authorities;
+    }
 }

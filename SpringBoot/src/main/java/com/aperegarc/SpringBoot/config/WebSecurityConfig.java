@@ -10,22 +10,16 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 public class WebSecurityConfig {
-    
-    @Bean
-    public UserDetailsService userDetailsService(){
 
+    /* @Bean
+    public UserDetailsService userDetailsService() {
         var user = User.withUsername("aperegarc").password("abc").roles("read").build();
-
         return new InMemoryUserDetailsManager(user);
-
-    }
-
+    } */
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
-
 }
-
