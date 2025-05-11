@@ -12,12 +12,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "role")
-    private String role;
+    private String name; //Nombre de la empresa
+    private String email; // Correo electrónico del usuario
+    private String role; // Rol del usuario (ADMIN, HOSTELERO, PROVEEDOR)
+    private String nif; // Número de identificación fiscal (si aplica)
+    private String phoneNumber; // Número de teléfono del usuario
 
     public int getId() {
 
